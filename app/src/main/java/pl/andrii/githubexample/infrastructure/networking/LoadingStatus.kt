@@ -1,4 +1,4 @@
-package pl.andrii.githubexample.infrastructure
+package pl.andrii.githubexample.infrastructure.networking
 
 sealed class LoadingStatus<out T : Any> {
     class Success<out T : Any>(val value: T) : LoadingStatus<T>()

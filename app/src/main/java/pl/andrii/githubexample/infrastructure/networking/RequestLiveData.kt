@@ -2,7 +2,6 @@ package pl.andrii.githubexample.infrastructure.networking
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.map
-import pl.andrii.githubexample.infrastructure.LoadingStatus
 import pl.andrii.githubexample.infrastructure.filterIsInstance
 
 class RequestLiveData<T : Any>(var data: MediatorLiveData<LoadingStatus<T>>) {

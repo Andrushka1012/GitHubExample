@@ -1,11 +1,9 @@
 package pl.andrii.githubexample.infrastructure.networking
 
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import pl.andrii.githubexample.infrastructure.LoadingStatus
 
 class PagedDataSource<T>(
     private val dataRequest: RequestLiveData<List<T>>,
