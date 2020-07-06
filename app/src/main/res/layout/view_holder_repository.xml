@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="repository"
+            type="pl.andrii.githubexample.models.domainModels.RepositoryModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/spanSmall"
+        android:paddingBottom="@dimen/spanSmall">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:circularImage="@{repository.imageSrc}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/nameTv"
+            style="@style/TextTitleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spanBig"
+            android:text="@{repository.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            tools:text="RepoName" />
+
+        <TextView
+            android:id="@+id/starsTv"
+            style="@style/TextParagraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spanTiny"
+            android:drawableStart="@drawable/ic_star"
+            android:drawableTint="@color/colorGold"
+            android:gravity="center"
+            android:text="@{String.valueOf(repository.starsCount)}"
+            app:layout_constraintStart_toStartOf="@+id/nameTv"
+            app:layout_constraintTop_toBottomOf="@+id/nameTv"
+            tools:text="30" />
+
+        <TextView
+            android:id="@+id/watchersTv"
+            style="@style/TextParagraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spanSmall"
+            android:layout_marginTop="@dimen/spanTiny"
+            android:drawableStart="@drawable/ic_notification"
+            android:drawableTint="@color/colorGold"
+            android:gravity="center"
+            android:text="@{String.valueOf(repository.watchersCount)}"
+            app:layout_constraintStart_toEndOf="@+id/starsTv"
+            app:layout_constraintTop_toBottomOf="@+id/nameTv"
+            tools:text="30" />
+
+
+        <TextView
+            android:id="@+id/languageTv"
+            style="@style/TextParagraphBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spanTiny"
+            android:text="@{repository.programmingLanguage}"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/nameTv"
+            app:layout_constraintTop_toBottomOf="@+id/starsTv"
+            tools:text="Kotlin" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
