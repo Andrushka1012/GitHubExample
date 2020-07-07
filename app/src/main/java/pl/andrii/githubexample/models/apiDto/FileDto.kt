@@ -1,5 +1,7 @@
 package pl.andrii.githubexample.models.apiDto
 
+// This file generated with json to kotlin plugin. In real projects i prefer to use
+// https://github.com/OpenAPITools/openapi-generator
 data class FileDto(
     val _links: Links,
     val content: String,

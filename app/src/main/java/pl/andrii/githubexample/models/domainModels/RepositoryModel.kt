@@ -11,5 +11,10 @@ data class RepositoryModel(
     val imageSrc: String,
     val programmingLanguage: String,
     val starsCount: Int,
-    val watchersCount: Int
+    val watchersCount: Int,
+    val license: String?,
+    val openIssuesCount: Int,
+    val cloneUrl: String,
+    val createdAt: String,
+    val forksCount: Int
 ): Parcelable

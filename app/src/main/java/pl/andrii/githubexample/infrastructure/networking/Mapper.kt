@@ -21,7 +21,12 @@ class Mapper {
             imageSrc = repositoryDto.owner.avatar_url,
             programmingLanguage = repositoryDto.language ?: "",
             starsCount = repositoryDto.stargazers_count,
-            watchersCount = repositoryDto.watchers_count
+            watchersCount = repositoryDto.watchers_count,
+            cloneUrl = repositoryDto.clone_url,
+            createdAt = repositoryDto.created_at,
+            forksCount = repositoryDto.forks_count,
+            license = repositoryDto.license?.name,
+            openIssuesCount = repositoryDto.open_issues_count
         )
     }
 

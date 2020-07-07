@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -17,6 +18,95 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/spanSmall"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:id="@+id/ownerTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spanSmall"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{String.format(@string/repository_owner, repository.owner)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/repository_owner" />
+
+            <TextView
+                android:id="@+id/cloneUrlTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spanSmall"
+                android:textAlignment="center"
+                android:text="@{String.format(@string/clone_url, repository.cloneUrl)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ownerTv"
+                tools:text="@string/clone_url" />
+
+            <TextView
+                android:id="@+id/createdAtTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spanSmall"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{String.format(@string/created_at, repository.createdAt)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cloneUrlTv"
+                tools:text="@string/created_at" />
+
+            <TextView
+                android:id="@+id/forksCountTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spanSmall"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@{String.format(@string/forks_count, repository.forksCount)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createdAtTv"
+                tools:text="@string/forks_count" />
+
+            <TextView
+                android:id="@+id/licenseTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spanSmall"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:isVisible="@{repository.license != null}"
+                android:text="@{String.format(@string/license, repository.license)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forksCountTv"
+                tools:text="@string/license" />
+
+            <TextView
+                android:id="@+id/languageTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spanSmall"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:isVisible="@{repository.programmingLanguage.length() != 0}"
+                android:text="@{String.format(@string/programming_language, repository.programmingLanguage)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/licenseTv"
+                tools:text="@string/programming_language" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <com.mittsu.markedview.MarkedView
             android:id="@+id/readMeMdv"
             android:layout_width="0dp"
@@ -25,18 +115,28 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TextView
+            android:id="@+id/textView"
+            style="@style/TextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextTitle"
             android:isVisible="@{viewModel.readMeRequestData.hasError}"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/read_me_not_provided"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isVisible="@{viewModel.readMeRequestData.isLoading()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

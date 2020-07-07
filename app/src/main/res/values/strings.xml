@@ -3,4 +3,10 @@
     <string name="something_went_wrong">Something went wrong</string>
     <string name="network_error">Network error. Response code -> %1$d</string>
     <string name="read_me_not_provided">Read me file not provided for this repository</string>
+    <string name="repository_owner">Repository owner: %1$s</string>
+    <string name="clone_url">Clone url:\n %1$s</string>
+    <string name="created_at">Created at: %1$s</string>
+    <string name="forks_count">Forks count: %1$d</string>
+    <string name="license">License: %1$s</string>
+    <string name="programming_language">Programming language: %1$s</string>
 </resources>
