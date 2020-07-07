@@ -2,6 +2,7 @@ package pl.andrii.githubexample
 
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
+import pl.andrii.githubexample.infrastructure.networking.GitHubService
 import pl.andrii.githubexample.infrastructure.networking.Mapper
 import pl.andrii.githubexample.infrastructure.networking.SecretInterceptor
 import retrofit2.Retrofit
@@ -26,6 +27,11 @@ val appModule = module {
             .client(client)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
+    }
+
+    single {
+        val retrofit = get<Retrofit>()
+        retrofit.create(GitHubService::class.java)
     }
 
 }
