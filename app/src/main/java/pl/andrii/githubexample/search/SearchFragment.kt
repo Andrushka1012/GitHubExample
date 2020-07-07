@@ -57,7 +57,7 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun displayError(exception: Exception?) {
-        Log.e("SearchActivity", "SearchActivity error:", exception)
+        Log.e("SearchFragment", "SearchFragment error:", exception)
         if (exception is HttpException) {
             val message = resources.getString(R.string.network_error, exception.code())
             Toast.makeText(requireContext(), message, Toast.LENGTH_LONG)

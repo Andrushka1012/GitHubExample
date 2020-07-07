@@ -5,18 +5,7 @@
 
     <!-- Span -->
     <dimen name="spanTiny">4dp</dimen>
-    <dimen name="spanShort">6dp</dimen>
     <dimen name="spanSmall">8dp</dimen>
-    <dimen name="spanMedium">12dp</dimen>
-    <dimen name="spanFreer">14dp</dimen>
     <dimen name="spanBig">16dp</dimen>
-    <dimen name="spanHuge">20dp</dimen>
-    <dimen name="spanLarge">30dp</dimen>
-
-    <dimen name="sizeSmall">40dp</dimen>
-    <dimen name="sizeMedium">60dp</dimen>
-    <dimen name="sizeLarge">156dp</dimen>
-    <dimen name="sizeGiant">180dp</dimen>
-
 
 </resources>

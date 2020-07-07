@@ -5,10 +5,6 @@ import androidx.lifecycle.map
 import pl.andrii.githubexample.infrastructure.filterIsInstance
 
 class RequestLiveData<T : Any>(var data: MediatorLiveData<LoadingStatus<T>>) {
-    fun postValue(newContentValue: T) {
-        data.postValue(LoadingStatus.Success(newContentValue))
-    }
-
     constructor() : this(MediatorLiveData())
 
     val errorData = data.filterIsInstance<LoadingStatus.Error>()
