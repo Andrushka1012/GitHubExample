@@ -65,24 +65,24 @@ class PagedDataSourceFactory<T>(
     private val dataBlock: suspend (page: Int, loadSize: Int) -> Page<T>
 ) : DataSource.Factory<Int, T>() {
 
-    private lateinit var datasource: PagedDataSource<T>
+    private lateinit var dataSource: PagedDataSource<T>
 
     override fun create(): DataSource<Int, T> {
-        datasource = PagedDataSource(
+        dataSource = PagedDataSource(
             dataRequest,
             scope,
             dataBlock
         )
-        return datasource
+        return dataSource
     }
 
     fun invalidate() {
-        if (::datasource.isInitialized) {
-            datasource.invalidate()
+        if (::dataSource.isInitialized) {
+            dataSource.invalidate()
         }
     }
 
     companion object {
-        const val DEFAULT_PAGE_SIZE = 20
+        const val DEFAULT_PAGE_SIZE = 10
     }
 }
