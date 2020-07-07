@@ -16,8 +16,9 @@ class Mapper {
     private fun map(repositoryDto: RepositoryDto): RepositoryModel {
         return RepositoryModel(
             id = repositoryDto.id,
-            imageSrc = repositoryDto.owner.avatar_url,
             name = repositoryDto.name,
+            owner = repositoryDto.owner.login,
+            imageSrc = repositoryDto.owner.avatar_url,
             programmingLanguage = repositoryDto.language ?: "",
             starsCount = repositoryDto.stargazers_count,
             watchersCount = repositoryDto.watchers_count

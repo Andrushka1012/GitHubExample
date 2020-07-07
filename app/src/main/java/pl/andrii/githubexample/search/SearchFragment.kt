@@ -20,7 +20,15 @@ import retrofit2.HttpException
 class SearchFragment : BaseFragment() {
     private val searchViewModel by viewModel<SearchViewModel>()
 
-    private val repositoriesAdapter = RepositoriesAdapter(RepositoryDiffUtilCallback())
+    private val repositoriesAdapter = RepositoriesAdapter(
+        RepositoryDiffUtilCallback()
+    ) { repository ->
+        mainNavController.navigate(
+            SearchFragmentDirections.actionSearchFragmentToRepositoryDetailsFragment(
+                repository
+            )
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

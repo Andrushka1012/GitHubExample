@@ -8,7 +8,7 @@ class RepositoryViewHolder(
     private val binding: ViewHolderRepositoryBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(repository: RepositoryModel?) {
+    fun bind(repository: RepositoryModel) {
         binding.repository = repository
         binding.executePendingBindings()
     }

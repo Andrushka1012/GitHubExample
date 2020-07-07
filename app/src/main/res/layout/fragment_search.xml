@@ -22,7 +22,7 @@
             android:layout_marginEnd="@dimen/spanBig"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:text="@={viewModel.searchQuery}"
+            android:text="@={viewModel.searchQueryData}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

@@ -10,7 +10,8 @@ import pl.andrii.githubexample.infrastructure.RepositoryDiffUtilCallback
 import pl.andrii.githubexample.models.domainModels.RepositoryModel
 
 class RepositoriesAdapter(
-    callback: RepositoryDiffUtilCallback
+    callback: RepositoryDiffUtilCallback,
+    private val onRepositorySelected: (repository: RepositoryModel) -> Unit
 ) : PagedListAdapter<RepositoryModel, RepositoryViewHolder>(callback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
@@ -26,7 +27,16 @@ class RepositoriesAdapter(
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val repositoryData = getItem(position)
+
+        checkNotNull(repositoryData)
+
+        holder.apply {
+            bind(repositoryData)
+            itemView.setOnClickListener {
+                onRepositorySelected.invoke(repositoryData)
+            }
+        }
     }
 
 }

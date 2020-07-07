@@ -13,7 +13,8 @@ import pl.andrii.githubexample.infrastructure.networking.RequestLiveData
 import pl.andrii.githubexample.models.domainModels.RepositoryModel
 
 class SearchViewModel(private val searchRepository: SearchRepository) : ViewModel() {
-    var searchQuery = MutableLiveData("")
+    var searchQueryData = MutableLiveData("")
+    private var currentSearchQuery: String? = null
 
     val requestData = RequestLiveData<List<RepositoryModel>>()
 
@@ -21,10 +22,11 @@ class SearchViewModel(private val searchRepository: SearchRepository) : ViewMode
         requestData,
         viewModelScope
     ) { page: Int, pageSize: Int ->
-        val query = requireNotNull(searchQuery.value)
+        val query = requireNotNull(searchQueryData.value)
 
         if (query.isNotBlank()) {
-            searchRepository.search(requireNotNull(searchQuery.value), page, pageSize)
+            currentSearchQuery = query
+            searchRepository.search(requireNotNull(searchQueryData.value), page, pageSize)
         } else Page.emptyPage()
     }
 
@@ -40,7 +42,7 @@ class SearchViewModel(private val searchRepository: SearchRepository) : ViewMode
     }
 
     fun search(query: String) {
-        if (!searchQuery.value.isNullOrBlank()) {
+        if (query != currentSearchQuery && !searchQueryData.value.isNullOrBlank()) {
             dataSourceFactory.invalidate()
         }
     }

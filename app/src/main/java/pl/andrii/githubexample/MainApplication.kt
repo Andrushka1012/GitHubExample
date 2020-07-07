@@ -4,6 +4,7 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import pl.andrii.githubexample.repositoryDetails.repositoryDetailsModule
 import pl.andrii.githubexample.search.searchModule
 
 class MainApplication : Application() {
@@ -18,7 +19,8 @@ class MainApplication : Application() {
         modules(
             listOf(
                 appModule,
-                searchModule
+                searchModule,
+                repositoryDetailsModule
             )
         )
     }

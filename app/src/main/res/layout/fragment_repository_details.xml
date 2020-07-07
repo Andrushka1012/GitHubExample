@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="repository"
+            type="pl.andrii.githubexample.models.domainModels.RepositoryModel" />
+
+        <variable
+            name="viewModel"
+            type="pl.andrii.githubexample.repositoryDetails.RepositoryDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.mittsu.markedview.MarkedView
+            android:id="@+id/readMeMdv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:isVisible="@{viewModel.readMeRequestData.hasContent}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextTitle"
+            android:isVisible="@{viewModel.readMeRequestData.hasError}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/read_me_not_provided"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -2,4 +2,5 @@
     <string name="app_name">GitHubExample</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="network_error">Network error. Response code -> %1$d</string>
+    <string name="read_me_not_provided">Read me file not provided for this repository</string>
 </resources>

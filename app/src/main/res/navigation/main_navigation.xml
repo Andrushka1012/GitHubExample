@@ -8,5 +8,23 @@
         android:id="@+id/searchFragment"
         tools:layout="@layout/fragment_search"
         android:name="pl.andrii.githubexample.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_repositoryDetailsFragment"
+            app:destination="@id/repositoryDetailsFragment"
+            app:enterAnim="@anim/slide_left_from_right"
+            app:exitAnim="@anim/slide_left_from_middle"
+            app:popEnterAnim="@anim/slide_right_from_left"
+            app:popExitAnim="@anim/slide_right_from_middle"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryDetailsFragment"
+        tools:layout="@layout/fragment_repository_details"
+        android:name="pl.andrii.githubexample.repositoryDetails.RepositoryDetailsFragment"
+        android:label="RepositoryDetailsFragment" >
+        <argument
+            android:name="repository"
+            app:argType="pl.andrii.githubexample.models.domainModels.RepositoryModel" />
+    </fragment>
 </navigation>
