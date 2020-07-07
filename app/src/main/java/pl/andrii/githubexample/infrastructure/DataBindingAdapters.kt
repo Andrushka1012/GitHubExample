@@ -4,19 +4,18 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import coil.api.load
-import coil.request.CachePolicy
-import coil.transform.CircleCropTransformation
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import pl.andrii.githubexample.R
 
 @BindingAdapter("android:circularImage")
 fun loadCircular(view: ImageView, value: String?) = value?.let {
-    view.load(value) {
-        crossfade(true)
-        diskCachePolicy(CachePolicy.ENABLED)
-        placeholder(R.drawable.ic_repository)
-        transformations(CircleCropTransformation())
-    }
+   Glide.with(view)
+       .load(value)
+       .placeholder(R.drawable.ic_repository)
+       .circleCrop()
+       .transition(withCrossFade())
+       .into(view)
 }
 
 @BindingAdapter("android:isVisible")

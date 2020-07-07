@@ -122,7 +122,7 @@
             style="@style/TextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:isVisible="@{viewModel.readMeRequestData.hasError}"
+            android:isVisible="@{viewModel.readMeRequestData.isNotFoundError}"
             android:text="@string/read_me_not_provided"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
